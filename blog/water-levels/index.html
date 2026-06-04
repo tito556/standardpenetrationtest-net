@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Live water monitoring in the United Kingdom</title><meta name="description" content="Real-time river flow from official UK Environment Agency monitoring stations in the United Kingdom. Relevant for groundwater, water wells, drilling and geo"><meta name="theme-color" content="#0A2540">
+<link rel="canonical" href="https://standardpenetrationtest.net/blog/water-levels/"><meta property="og:title" content="Live water monitoring in the United Kingdom"><meta property="og:url" content="https://standardpenetrationtest.net/blog/water-levels/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Live water monitoring in the United Kingdom", "url": "https://standardpenetrationtest.net/blog/water-levels/", "inLanguage": "en", "publisher": {"@type": "Organization", "name": "Standard Penetration Test"}}</script>
+<style>:root{--primary:#0A2540;--accent:#0369a1;--bg:#f9fafb;--border:#e5e7eb;--muted:#64748b;--font-body:'Source Sans 3',sans-serif;--font-h:'Source Serif 4',Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font-body);line-height:1.65;color:#1f2937;background:var(--bg)}a{color:var(--accent)}.container{max-width:1100px;margin:0 auto;padding:0 24px}
+header{background:var(--primary);color:#fff;padding:18px 0}header .container{display:flex;align-items:center;justify-content:space-between}header a{color:#fff;text-decoration:none}header .brand{font-family:var(--font-h);font-size:1.2rem;font-weight:700}header nav{display:flex;gap:16px;font-size:.92rem}
+.hero{background:linear-gradient(135deg,#0369a1,#075985);color:#fff;padding:56px 0 36px}.hero h1{font-family:var(--font-h);font-size:2.2rem;margin-bottom:12px}.hero p{color:#bae6fd;max-width:720px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin:24px 0}.stat{background:#fff;border:1px solid var(--border);border-radius:8px;padding:18px;text-align:center}.stat-num{font-size:1.7rem;font-weight:700;color:var(--primary);font-family:var(--font-h)}.stat-label{font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
+main{padding:38px 0 60px}main h2{font-family:var(--font-h);font-size:1.4rem;color:var(--primary);margin:26px 0 12px;border-bottom:2px solid #0369a1;padding-bottom:6px;display:inline-block}main p{margin-bottom:14px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden}td{padding:9px 14px;border-bottom:1px solid var(--border)}tr td:last-child{text-align:right;white-space:nowrap}
+.src{background:#eff6ff;border-left:4px solid #2563eb;padding:16px 20px;margin:22px 0;border-radius:4px}.src a{color:#2563eb}
+.cta{background:var(--primary);color:#fff;padding:30px;border-radius:12px;text-align:center;margin:30px 0}.cta h3{color:#fff;margin-bottom:8px;font-family:var(--font-h)}.cta p{color:#e5e7eb}.cta a{display:inline-block;background:#0369a1;color:#fff;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:600;margin-top:14px}
+footer{background:#0f172a;color:#cbd5e1;padding:26px 0;font-size:.88rem;margin-top:36px}footer a{color:#fff}</style>
+<style id="ftr-fix">footer .container>div{min-width:0}footer p,footer a{overflow-wrap:anywhere;word-break:break-word}</style></head><body><header><div class="container"><a href="/" class="brand">Standard Penetration Test</a><nav><a href="/">Home</a><a href="/blog/water-levels/">Water data</a></nav></div></header>
+<section class="hero"><div class="container"><h1>Live water monitoring in the United Kingdom</h1><p>Real-time river flow from official UK Environment Agency monitoring stations in the United Kingdom. Relevant for groundwater, water wells, drilling and geotechnical site work.</p></div></section>
+<main><div class="container"><div class="stats">
+<div class="stat"><div class="stat-num">40</div><div class="stat-label">Active stations</div></div>
+<div class="stat"><div class="stat-num">3586</div><div class="stat-label">Max flow (m³/s)</div></div>
+<div class="stat"><div class="stat-num">02 Jun 2026</div><div class="stat-label">Updated</div></div></div>
+<h2>Monitoring stations</h2><div id="w-map" style="height:440px;width:100%;border-radius:12px;border:1px solid #e5e7eb;margin-bottom:28px"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>(function(){var el=document.getElementById('w-map');if(!el||!window.L)return;var map=L.map('w-map').setView([51.851,-1.391],5);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OSM',maxZoom:12}).addTo(map);
+var marks=[[53.1319,-0.8037,"North Muskham",3585.6,"m³/s"],
+[52.9273,-1.4754,"Derby City",902.0,"m³/s"],
+[52.4837,-2.3877,"Chelmarsh Reservoir LVL",217.0,"m³/s"],
+[52.4083,-2.3375,"Trimpley Reservoir LVL",123.0,"m³/s"],
+[52.0114,-0.9310,"THORNBOROUGH MILL SLUICE AUTOMATIO",26.2,"m³/s"],
+[53.3907,-2.5604,"Westy",24.9,"m³/s"],
+[51.4858,-0.5891,"Windsor Park",23.5,"m³/s"],
+[51.4856,-0.5894,"RIVER THAMES AT WINDSOR",23.5,"m³/s"],
+[52.8654,-1.3354,"Shardlow",22.6,"m³/s"],
+[51.3919,-0.4214,"Walton",19.6,"m³/s"],
+[52.3836,-2.3224,"Bewdley",17.3,"m³/s"],
+[51.5241,-0.7021,"Maidenhead",17.0,"m³/s"],
+[51.4316,-0.5122,"Staines",17.0,"m³/s"],
+[51.2564,0.4886,"EAST FARLEIGH GS",16.6,"m³/s"],
+[52.6364,-2.5250,"Buildwas",16.5,"m³/s"],
+[51.4154,-0.3077,"Thames at Kingston (Backup)",15.9,"m³/s"],
+[51.4150,-0.3089,"Kingston",15.2,"m³/s"],
+[51.6478,-1.2542,"Sutton Courtenay",10.6,"m³/s"],
+[53.5296,-1.1416,"Doncaster",10.2,"m³/s"],
+[50.7529,-3.0472,"WHITFORD BRIDGE OLD",9.4,"m³/s"],
+[52.6672,0.1591,"WISBECH TIDAL WITS",9.4,"m³/s"],
+[51.4613,-0.9679,"Reading",9.2,"m³/s"],
+[51.5293,-0.6972,"Taplow",9.2,"m³/s"],
+[51.0094,-1.4989,"TIMSBURY GS",9.2,"m³/s"],
+[52.7569,-1.8054,"Kings Bromley",7.9,"m³/s"],
+[51.5678,-0.0510,"Lea Bridge",7.7,"m³/s"],
+[50.7166,-3.5277,"TREWS WEIR",7.6,"m³/s"],
+[50.9376,-1.3648,"Mansbridge USGS",7.5,"m³/s"],
+[52.7245,-2.8722,"Montford",7.0,"m³/s"],
+[52.5602,-1.9834,"Bescot",6.9,"m³/s"],
+[50.9904,-1.3355,"Allbrook and Highbridge Summed Flo",6.4,"m³/s"],
+[51.4341,-1.0488,"Reading Calcot Bridge",6.2,"m³/s"],
+[50.9356,-1.4972,"Testwood Nivus USGS",6.0,"m³/s"],
+[53.4383,-2.3441,"Ashton Weir",6.0,"m³/s"],
+[52.8319,-1.2735,"Kegworth",6.0,"m³/s"],
+[50.9358,-1.3684,"RIVERSIDE PARK GS",5.9,"m³/s"],
+[51.0900,-1.2710,"EASTON USGS",5.7,"m³/s"],
+[50.3631,-3.9112,"ERMINGTON",5.6,"m³/s"],
+[51.3725,-0.4663,"Weybridge",5.5,"m³/s"],
+[51.1522,-1.4503,"CHILBOLTON USGS",5.5,"m³/s"]];marks.forEach(function(m){L.circleMarker([m[0],m[1]],{radius:6,fillColor:'#0369a1',color:'#fff',weight:2,fillOpacity:.85}).addTo(map).bindPopup('<strong>'+m[2]+'</strong><br>'+m[3]+' '+m[4]);});})();</script>
+<h2>Current readings</h2><table><tr><th style="text-align:left;padding:10px 14px;background:#0A2540;color:#fff">Station</th><th style="text-align:right;padding:10px 14px;background:#0A2540;color:#fff">Reading</th></tr><tr><td>North Muskham</td><td><strong>3585.6</strong> m³/s</td></tr>
+<tr><td>Derby City</td><td><strong>902.0</strong> m³/s</td></tr>
+<tr><td>Chelmarsh Reservoir LVL</td><td><strong>217.0</strong> m³/s</td></tr>
+<tr><td>Trimpley Reservoir LVL</td><td><strong>123.0</strong> m³/s</td></tr>
+<tr><td>THORNBOROUGH MILL SLUICE AUTOMATION</td><td><strong>26.2</strong> m³/s</td></tr>
+<tr><td>Westy</td><td><strong>24.9</strong> m³/s</td></tr>
+<tr><td>Windsor Park</td><td><strong>23.5</strong> m³/s</td></tr>
+<tr><td>RIVER THAMES AT WINDSOR</td><td><strong>23.5</strong> m³/s</td></tr>
+<tr><td>Shardlow</td><td><strong>22.6</strong> m³/s</td></tr>
+<tr><td>Walton</td><td><strong>19.6</strong> m³/s</td></tr>
+<tr><td>Bewdley</td><td><strong>17.3</strong> m³/s</td></tr>
+<tr><td>Maidenhead</td><td><strong>17.0</strong> m³/s</td></tr>
+<tr><td>Staines</td><td><strong>17.0</strong> m³/s</td></tr>
+<tr><td>EAST FARLEIGH GS</td><td><strong>16.6</strong> m³/s</td></tr>
+<tr><td>Buildwas</td><td><strong>16.5</strong> m³/s</td></tr>
+<tr><td>Thames at Kingston (Backup)</td><td><strong>15.9</strong> m³/s</td></tr>
+<tr><td>Kingston</td><td><strong>15.2</strong> m³/s</td></tr>
+<tr><td>Sutton Courtenay</td><td><strong>10.6</strong> m³/s</td></tr>
+<tr><td>Doncaster</td><td><strong>10.2</strong> m³/s</td></tr>
+<tr><td>WHITFORD BRIDGE OLD</td><td><strong>9.4</strong> m³/s</td></tr>
+<tr><td>WISBECH TIDAL WITS</td><td><strong>9.4</strong> m³/s</td></tr>
+<tr><td>Reading</td><td><strong>9.2</strong> m³/s</td></tr>
+<tr><td>Taplow</td><td><strong>9.2</strong> m³/s</td></tr>
+<tr><td>TIMSBURY GS</td><td><strong>9.2</strong> m³/s</td></tr>
+<tr><td>Kings Bromley</td><td><strong>7.9</strong> m³/s</td></tr></table>
+<h2>Why water data matters in geotechnics</h2><p>Groundwater levels and river flow drive pore-water pressure, effective stress, slope stability, well yield and the design of foundations, dewatering and drilling. Monitoring official hydrological networks helps anticipate seasonal and flood conditions on site.</p>
+<h2>Official source</h2><div class="src"><p>Data: <strong>UK Environment Agency</strong>. <a href="https://environment.data.gov.uk/flood-monitoring/" target="_blank" rel="noopener">Official portal →</a></p></div>
+<div class="cta"><h3>Standard Penetration Test — drilling & groundwater services</h3><p>Water wells, dewatering, permeability testing and geotechnical site investigation.</p><a href="/">Our services →</a></div>
+</div></main><footer><div class="container"><p>&copy; 2026 Standard Penetration Test · UK Environment Agency</p></div></footer></body></html>

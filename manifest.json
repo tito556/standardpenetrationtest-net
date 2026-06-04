@@ -1,0 +1,16 @@
+{
+  "name": "Standard Penetration Test",
+  "short_name": "Standard Pen",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f3a3a",
+  "icons": [
+    {
+      "src": "/img/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "lang": "en"
+}
