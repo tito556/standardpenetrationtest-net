@@ -1,12 +1,11 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Live water monitoring in the United Kingdom</title><meta name="description" content="Real-time river flow from official UK Environment Agency monitoring stations in the United Kingdom. Relevant for groundwater, water wells, drilling and geo"><meta name="theme-color" content="#0A2540">
+<title>Live water monitoring in the United Kingdom</title><link rel="preload" as="image" href="img/calicatas-exploratorias-langen-4.webp" fetchpriority="high"><meta name="description" content="Real-time river flow from official UK Environment Agency monitoring stations in the United Kingdom. Relevant for groundwater, water wells, drilling and geo"><meta name="theme-color" content="#0A2540">
 <link rel="canonical" href="https://standardpenetrationtest.net/blog/water-levels/"><meta property="og:title" content="Live water monitoring in the United Kingdom"><meta property="og:url" content="https://standardpenetrationtest.net/blog/water-levels/">
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="/css/leaflet-fda0.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/css/leaflet-fda0.css"></noscript>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Live water monitoring in the United Kingdom", "url": "https://standardpenetrationtest.net/blog/water-levels/", "inLanguage": "en", "publisher": {"@type": "Organization", "name": "Standard Penetration Test"}}</script>
-<style>:root{--primary:#0A2540;--accent:#0369a1;--bg:#f9fafb;--border:#e5e7eb;--muted:#64748b;--font-body:'Source Sans 3',sans-serif;--font-h:'Source Serif 4',Georgia,serif}
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font-body);line-height:1.65;color:#1f2937;background:var(--bg)}a{color:var(--accent)}.container{max-width:1100px;margin:0 auto;padding:0 24px}
+<style>:root{--primary:#0A2540;--accent:#0369a1;--bg:#f9fafb;--border:#e5e7eb;--muted:#64748b;--font-body:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;--font-h:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0}body{font-family:var(--font-body);line-height:1.65;color:#1f2937;background:var(--bg)}a{color:var(--accent)}.container{max-width:1100px;margin:0 auto;padding:0 24px}
 header{background:var(--primary);color:#fff;padding:18px 0}header .container{display:flex;align-items:center;justify-content:space-between}header a{color:#fff;text-decoration:none}header .brand{font-family:var(--font-h);font-size:1.2rem;font-weight:700}header nav{display:flex;gap:16px;font-size:.92rem}
 .hero{background:linear-gradient(135deg,#0369a1,#075985);color:#fff;padding:56px 0 36px}.hero h1{font-family:var(--font-h);font-size:2.2rem;margin-bottom:12px}.hero p{color:#bae6fd;max-width:720px}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin:24px 0}.stat{background:#fff;border:1px solid var(--border);border-radius:8px;padding:18px;text-align:center}.stat-num{font-size:1.7rem;font-weight:700;color:var(--primary);font-family:var(--font-h)}.stat-label{font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
@@ -15,56 +14,14 @@ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(-
 .src{background:#eff6ff;border-left:4px solid #2563eb;padding:16px 20px;margin:22px 0;border-radius:4px}.src a{color:#2563eb}
 .cta{background:var(--primary);color:#fff;padding:30px;border-radius:12px;text-align:center;margin:30px 0}.cta h3{color:#fff;margin-bottom:8px;font-family:var(--font-h)}.cta p{color:#e5e7eb}.cta a{display:inline-block;background:#0369a1;color:#fff;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:600;margin-top:14px}
 footer{background:#0f172a;color:#cbd5e1;padding:26px 0;font-size:.88rem;margin-top:36px}footer a{color:#fff}</style>
-<style id="ftr-fix">footer .container>div{min-width:0}footer p,footer a{overflow-wrap:anywhere;word-break:break-word}</style><!--selfhost-fonts--><link rel="preload" href="fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high"><style>@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(fonts/inter-400-latin-ext.woff2) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(fonts/inter-400-latin.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(fonts/inter-600-latin-ext.woff2) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(fonts/inter-600-latin.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(fonts/inter-700-latin-ext.woff2) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(fonts/inter-700-latin.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}</style></head><body><header><div class="container"><a href="/" class="brand">Standard Penetration Test</a><nav><a href="/">Home</a><a href="/blog/water-levels/">Water data</a></nav></div></header>
+<style id="ftr-fix">footer .container>div{min-width:0}footer p,footer a{overflow-wrap:anywhere;word-break:break-word}</style><!--selfhost-fonts--><style></style></head><body><header><div class="container"><a href="/" class="brand">Standard Penetration Test</a><nav><a href="/">Home</a><a href="/blog/water-levels/">Water data</a></nav></div></header>
 <section class="hero"><div class="container"><h1>Live water monitoring in the United Kingdom</h1><p>Real-time river flow from official UK Environment Agency monitoring stations in the United Kingdom. Relevant for groundwater, water wells, drilling and geotechnical site work.</p></div></section>
 <main><div class="container"><div class="stats">
 <div class="stat"><div class="stat-num">40</div><div class="stat-label">Active stations</div></div>
 <div class="stat"><div class="stat-num">3586</div><div class="stat-label">Max flow (m³/s)</div></div>
 <div class="stat"><div class="stat-num">02 Jun 2026</div><div class="stat-label">Updated</div></div></div>
 <h2>Monitoring stations</h2><div id="w-map" style="height:440px;width:100%;border-radius:12px;border:1px solid #e5e7eb;margin-bottom:28px"></div>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/js/leaflet-fda0.js" defer></script>
 <script>(function(){var el=document.getElementById('w-map');if(!el||!window.L)return;var map=L.map('w-map').setView([51.851,-1.391],5);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OSM',maxZoom:12}).addTo(map);
 var marks=[[53.1319,-0.8037,"North Muskham",3585.6,"m³/s"],
