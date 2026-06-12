@@ -22,7 +22,7 @@ footer{background:#0f172a;color:#cbd5e1;padding:26px 0;font-size:.88rem;margin-t
 <div class="stat"><div class="stat-num">02 Jun 2026</div><div class="stat-label">Updated</div></div></div>
 <h2>Monitoring stations</h2><div id="w-map" style="height:440px;width:100%;border-radius:12px;border:1px solid #e5e7eb;margin-bottom:28px"></div>
 <script src="/js/leaflet-fda0.js" defer></script>
-<script>(function(){var el=document.getElementById('w-map');if(!el||!window.L)return;var map=L.map('w-map').setView([51.851,-1.391],5);
+<script>document.addEventListener('DOMContentLoaded',function(){/*lf-defer-fix*/(function(){var el=document.getElementById('w-map');if(!el||!window.L)return;var map=L.map('w-map').setView([51.851,-1.391],5);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OSM',maxZoom:12}).addTo(map);
 var marks=[[53.1319,-0.8037,"North Muskham",3585.6,"m³/s"],
 [52.9273,-1.4754,"Derby City",902.0,"m³/s"],
@@ -63,7 +63,8 @@ var marks=[[53.1319,-0.8037,"North Muskham",3585.6,"m³/s"],
 [51.0900,-1.2710,"EASTON USGS",5.7,"m³/s"],
 [50.3631,-3.9112,"ERMINGTON",5.6,"m³/s"],
 [51.3725,-0.4663,"Weybridge",5.5,"m³/s"],
-[51.1522,-1.4503,"CHILBOLTON USGS",5.5,"m³/s"]];marks.forEach(function(m){L.circleMarker([m[0],m[1]],{radius:6,fillColor:'#0369a1',color:'#fff',weight:2,fillOpacity:.85}).addTo(map).bindPopup('<strong>'+m[2]+'</strong><br>'+m[3]+' '+m[4]);});})();</script>
+[51.1522,-1.4503,"CHILBOLTON USGS",5.5,"m³/s"]];marks.forEach(function(m){L.circleMarker([m[0],m[1]],{radius:6,fillColor:'#0369a1',color:'#fff',weight:2,fillOpacity:.85}).addTo(map).bindPopup('<strong>'+m[2]+'</strong><br>'+m[3]+' '+m[4]);});})();
+});</script>
 <h2>Current readings</h2><table><tr><th style="text-align:left;padding:10px 14px;background:#0A2540;color:#fff">Station</th><th style="text-align:right;padding:10px 14px;background:#0A2540;color:#fff">Reading</th></tr><tr><td>North Muskham</td><td><strong>3585.6</strong> m³/s</td></tr>
 <tr><td>Derby City</td><td><strong>902.0</strong> m³/s</td></tr>
 <tr><td>Chelmarsh Reservoir LVL</td><td><strong>217.0</strong> m³/s</td></tr>
